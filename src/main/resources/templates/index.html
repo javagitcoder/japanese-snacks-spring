@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本零食学习 - 学习日语和英语</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🍬 日本零食学习 🍫</h1>
+        <p>通过美味的日本零食学习日语和英语！</p>
+    </div>
+
+    <div class="snack-grid">
+        <div class="snack-card" th:each="snack : ${snacks}">
+            <a th:href="@{/snack/{id}(id=${snack.id})}" class="image-link">
+            <img th:src="${snack.imageName}" alt="${snack.name}" class="snack-image"
+                 th:onerror="this.src='${imageBaseUrl}/default.jpg'">
+            </a>
+            <div class="snack-info">
+                <h3 class="snack-name" th:text="${snack.name}">零食名称</h3>
+                <p class="snack-japanese">日语: <span th:text="${snack.japaneseName}">日本語名</span></p>
+                <p class="snack-english">英语: <span th:text="${snack.englishName}">English Name</span></p>
+                <p class="snack-description" th:text="${snack.description}">零食描述</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分页控件 -->
+    <div class="pagination" th:if="${totalPages > 1}">
+        <!-- 上一页 -->
+        <a th:href="@{/(page=${currentPage - 1}, size=${pageSize})}"
+           th:class="${currentPage == 1} ? 'disabled' : ''">
+            上一页
+        </a>
+
+        <!-- 页码 -->
+        <span th:each="page : ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{/(page=${page}, size=${pageSize})}"
+                   th:text="${page}"
+                   th:class="${page == currentPage} ? 'current' : ''">
+                    [[${page}]]
+                </a>
+            </span>
+
+        <!-- 下一页 -->
+        <a th:href="@{/(page=${currentPage + 1}, size=${pageSize})}"
+           th:class="${currentPage == totalPages} ? 'disabled' : ''">
+            下一页
+        </a>
+    </div>
+
+    <!-- 分页信息 -->
+    <div style="text-align: center; margin-top: 20px; color: #666;">
+        第 <span th:text="${currentPage}">1</span> 页 / 共 <span th:text="${totalPages}">1</span> 页
+        (总计 <span th:text="${totalCount}">0</span> 种零食)
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/snack_learning?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root  # ?????MySQL???
+    password: ******  # ?????MySQL??
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+
+# ?????
+app:
+  image:
+    base-url: https://javagitcoder.github.io/assets/gitbook/images
+    default-image: default.jpg
+  page:
+    size: 10
+
+# MyBatis ??
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.snacklearning.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# ????
+logging:
+  level:
+    com.example.snacklearning: DEBUG
+    org.springframework.web: INFO

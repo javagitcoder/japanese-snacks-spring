@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${snack.name} + ' - 日本零食学习'">零食详情</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 th:text="${snack.name}">零食名称</h1>
+        <p>零食详情 - 学习日语和英语</p>
+    </div>
+
+    <div class="detail-container" th:if="${snack}">
+        <img th:src="${snack.imageName}" alt="${snack.name}" class="detail-image"
+             th:onerror="this.src='https://via.placeholder.com/800x400?text=No+Image'">
+
+        <div class="detail-info">
+            <h2 class="snack-name" th:text="${snack.name}">零食名称</h2>
+            <p class="snack-japanese">日语: <span th:text="${snack.japaneseName}">日本語名</span></p>
+            <p class="snack-english">英语: <span th:text="${snack.englishName}">English Name</span></p>
+            <p class="snack-description" th:text="${snack.description}">零食描述</p>
+
+            <a href="/" class="back-link">← 返回零食列表</a>
+        </div>
+    </div>
+
+    <div th:unless="${snack}" style="text-align: center; padding: 50px;">
+        <h2>零食不存在</h2>
+        <a href="/" class="back-link">返回零食列表</a>
+    </div>
+</div>
+</body>
+</html>
