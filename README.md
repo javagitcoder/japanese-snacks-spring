@@ -1,5 +1,5 @@
-![Spring Boot + MyBatis]({{ site.baseurl }}/assets/gitbook/images/japangoods-spring-index.png "Spring Boot + MyBatis")
-![Spring Boot + MyBatis]({{ site.baseurl }}/assets/gitbook/images/japangoods-spring-detail.png "Spring Boot + MyBatis")
+![Spring Boot + MyBatis](https://javagitcoder.github.io/assets/gitbook/images/japangoods-spring-index.png "Spring Boot + MyBatis")
+![Spring Boot + MyBatis](https://javagitcoder.github.io/assets/gitbook/images/japangoods-spring-detail.png "Spring Boot + MyBatis")
 ```python
 # 创建数据库
 import pymysql
